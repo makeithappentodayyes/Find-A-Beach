@@ -4,13 +4,15 @@
 
 <head>
     <meta charset="UTF-8">
+    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
@@ -18,61 +20,161 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="./css/style.css" media="screen,projection" />
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
-
-    <title>Find A Beach</title>
+</head>
+<title>Find A Beach</title>
 </head>
 
 <body>
-    |<header class="jumbotron">
-        <h1 class="display-3">Find the 5 Closest Beaches to You</h1>
-        <p class="lead">Beaches Near You (map and a 5 Day Forecast)</p>
-        <p id="currentLocation" class="lead"></p>
-    </header>
 
-    <!-- basic container for diplaying the information about a beach so I can add an accordian later -->
+
+    <!-- basic container for displaying a card that decscribes the web site-->
+
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-12">
+            <div class="col s6 m12">
+                <div class="card horizontal light-blue" style="width: 100%">
+                    <span class="white-text" style="font-size: x-large">
+                        Find the 5 Closest Beaches to You<br>5 Day Weather Forecast, Directions, and more.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- this is a demo section for accordian collapsible-->
+        <div class="section">
+            <div class="row">
+                <div class="col s6 m12">
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">beach_access</i>Carlsbad State Beach</div>
+                            <div class="collapsible-body" id="_0">
+                                
+                                <div class="row">
+                                        <div class="col s6 m12"></div>
+                                        <span>
+                                            <h5>Forecast</h5>
+                                        </span>
+                                        <img src="./images/weathertestimage.png"
+                                            width="300px">
+                                    </div>
+
+                                <div class="row">
+                                    <div class="col s6 m12"></div>
+                                    <span>
+                                        <h5>Picture</h5>
+                                    </span>
+                                    <img src="https://www.coastal.ca.gov/access-photos/16_san_diego/04_Carlsbad/Carlsbad_State_Beach_near_Juniper_Avenue_2013_09_27_7632.jpg"
+                                        width="300px">
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col s6 m12"></div>
+                                    <span>
+                                        <h5>Directions</h5>
+                                    </span>
+                                    <img src="https://www.coastal.ca.gov/access-photos/16_san_diego/04_Carlsbad/Carlsbad_State_Beach_near_Juniper_Avenue_2013_09_27_7632.jpg"
+                                        width="300px">
+                                </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">beach_access</i>Second</div>
+                            <div class="collapsible-body" id="_1"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">beach_access</i>Third</div>
+                            <div class="collapsible-body" id="_2"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">beach_access</i>Fourth</div>
+                            <div class="collapsible-body" id="_3"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">beach_access</i>Fifth</div>
+                            <div class="collapsible-body" id="_4"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- section that has the Forecast, Map, and Pic wirefram-->
+        <div class="section">
+            <div class="row">
+                <div class="divider"></div>
+                <div class="col s12"></div>
                 <h4>Forecast</h4>
             </div>
-            <table class="table">
-                <thead>
-                    <tr class="tr">
-                        <th scope="col"></th>
-                        <th scope="col" class="th">Day 1</th>
-                        <th scope="col" class="th">Day 2</th>
-                        <th scope="col" class="th">Day 3</th>
-                        <th scope="col" class="th">Day 4</th>
-                        <th scope="col" class="th">Day 5</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row"><h6>Outlook</h6></th>
-                        <td>73F</td>
-                        <td>73F</td>
-                        <td>73F</td>
-                        <td>73F</td>
-                        <td>73F</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="col-12 col-md-6"><h3>Map</h3></div>
-            <img src="https://placehold.it/150x150">
-            <div class="col-12 col-md-12"></div>
-            <div class="col-12 col-md-6"><h3>Picture</h3></div>
-            <img src="https://placehold.it/150x150">
-        </div>
-    </div>
-    
 
-<!--JavaScript at end of body for optimized loading-->
-<script type="text/javascript" src="js/materialize.min.js"></script>
+            <div class="row">
+                <div class="col s6 m12 l12"></div>
+                <table class="table">
+                    <thead>
+                        <tr class="tr">
+                            <th></th>
+                            <th class="th">Day 1</th>
+                            <th class="th">Day 2</th>
+                            <th class="th">Day 3</th>
+                            <th class="th">Day 4</th>
+                            <th class="th">Day 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <h6>Outlook</h6>
+                            </th>
+                            <td>73F</td>
+                            <td>73F</td>
+                            <td>73F</td>
+                            <td>73F</td>
+                            <td>73F</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="section">
+                    <div class="col s6"></div>
+                    <h3>Map</h3>
+                    <img src="https://placehold.it/150x150">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="section">
+                    <div class="divider"></div>
+                    <div class="col s6"></div>
+                    <h3>Picture</h3>
+                    <img src="https://placehold.it/150x150">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var bLATTITUDE = 33.147743;
+        var bLONGITUDE = -117.346371;
+
+        var bNameMobileWeb = "Carlsbad State Beach";
+        var bPhoto_1 =
+            "https://www.coastal.ca.gov/access-photos/16_san_diego/04_Carlsbad/Carlsbad_State_Beach_near_Juniper_Avenue_2013_09_27_7632.jpg";
+
+
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
+        });
+    </script>
+
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 
 </html>
