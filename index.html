@@ -42,12 +42,12 @@
                     <div class="card-content white-text">
                         <span class="card-title">
                             <h3>Find Your Beach</h3>
-                            <p>Search for the 5 Closest Beaches based on your current location<br>Current Day Weather
+                            <p>Search for the 5 Closest Beaches based on your current location.<br>Current Day Weather
                                 Forecast, Directions, and more.</p>
                         </span>
                     </div>
                     <div class="card-action">
-                        <a class="waves-effect waves-light btn-large"><i
+                        <a class="waves-effect waves-light btn-large" id="btnSearch"><i
                                 class="material-icons left">beach_access</i>Find
                             Beaches</a>
                     </div>
@@ -73,7 +73,7 @@
                                     <span>
                                         <h5>Forecast</h5>
                                     </span>
-                                    <img src="./images/weathertestimage.png" width="300px">
+                                    <img src="./images/weathertestimage.png" width="300px" >
                                 </div>
 
                                 <div class="row">
@@ -117,9 +117,10 @@
     </div>
 
     <script>
+
+        //these variables are set to test values for mockup purposes only
         var bLATTITUDE = 33.147743;
         var bLONGITUDE = -117.346371;
-
         var bNameMobileWeb = "Carlsbad State Beach";
         var bPhoto_1 =
             "https://www.coastal.ca.gov/access-photos/16_san_diego/04_Carlsbad/Carlsbad_State_Beach_near_Juniper_Avenue_2013_09_27_7632.jpg";
@@ -127,6 +128,35 @@
 
         $(document).ready(function () {
             $('.collapsible').collapsible();
+
+            var options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            //if getcurrentposition is successful then get the coords and save the key:value pair    
+            function success(pos) {
+                var userLoc = pos.coords;
+                console.log('Your current position is:');
+                console.log(`Latitude_Evelyn : ${userLoc.latitude}`);
+                console.log(`Longitude_Evelyn : ${userLoc.longitude}`);
+                console.log(`More or less ${userLoc.accuracy} meters.`);
+                //set local storage key:value pair for my current lat and long using geolocate api
+                localStorage.setItem("myLat", userLoc.latitude)
+                localStorage.setItem("myLong", userLoc.longitude)
+            }
+            //if getcurrentposition is not successful return an error message
+            async function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+
+            //on click event for search call get lat and long
+            $("#btnSearch").on("click", function(){
+            navigator.geolocation.getCurrentPosition(success, error, options);
+            })
+            
+
         });
     </script>
 
