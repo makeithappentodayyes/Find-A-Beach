@@ -19,8 +19,10 @@ textarea {
   width: 80%;  /* The width is the width of the web page */
 }
 
+
+
 .h6 {
-  color: rgba(8, 14, 14, 0.982);
+  color: black;
   font-weight: 600;
 }
 
