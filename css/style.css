@@ -14,6 +14,11 @@ textarea {
   font-style: italic;
 }
 
+#map {
+  height: 300px;  /* The height is 300 pixels */
+  width: 80%;  /* The width is the width of the web page */
+}
+
 .h6 {
   color: rgba(8, 14, 14, 0.982);
   font-weight: 600;
