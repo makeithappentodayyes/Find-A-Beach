@@ -75,15 +75,32 @@
                                         <!-- <h5>Forecast</h5> -->
 
                                     </span>
-                                    <div class="location">
-                                        <h3 class="location-timezone">Timezone</h3>
-                                        <canvas class="icon" width="128" height="128"></canvas>
+
+                                    <div class="container">
+                                        <div class="app-title">
+                                          <p>Weather</p>
                                         </div>
-                                        <div class="temperature">
-                                            <h2 class="temperature-degree ">22</h2> 
-                                            <span>F</span>
-                                            <div class="temperature-description">cold or cold</div>
+                                  
+                                        <div class="notification"></div>
+                                  
+                                        <div class="weather-container">
+                                          <div class="weather-icon">
+                                            <img src="icons/unknown.png" alt="" />
+                                          </div>
+                                  
+                                          <div class="temperature-value">
+                                            <p>- °<span>C</span></p>
+                                          </div>
+                                  
+                                          <div class="the-temperature">
+                                            <p>-</p>
+                                          </div>
+                                  
+                                          <div class="location">
+                                            <p>-</p>
+                                          </div>
                                         </div>
+                                      </div>
                                    
                                     <!-- <img src="./images/weathertestimage.png" width="80%"> -->
                                 </div>
@@ -342,10 +359,9 @@
         });
     </script>
 
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script src="weatherpart/skycons.js"></script>
-    <script src="weatherpart/app.js"></script>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script src="weatherpart/app.js"></script>
 </body>
 
 </html>
