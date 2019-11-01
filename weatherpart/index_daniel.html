@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Weather</title>
-</head>
-<body>
-   <div class="location">
-        <h1 class= "location-timezone">Timezone</h1>
-        <canvas class="icon" width="128" height="128"></canvas>
-        </div>
-        <div class="temperature">
-           
-           
-           <p class="temperature-degree">22
-            <span>F</span></p>
 
-           
-           
-            <!-- <h2 class="temperature-degree">22</h2>
-            <span>F</span> -->
-            <div class="temperature-description">cold or cold</div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Weather Part</title>
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="app-title">
+        <p>Weather</p>
+      </div>
+
+      <div class="notification"></div>
+
+      <div class="weather-container">
+        <div class="weather-icon">
+          <img src="icons/unknown.png" alt="" />
         </div>
-   <script src="skycons.js"></script>   
-   <script src="app.js"></script>
-   
-</body>
+
+        <div class="temperature-value">
+          <p>- °<span>C</span></p>
+        </div>
+
+        <div class="the-temperature">
+          <p>-</p>
+        </div>
+
+        <div class="location">
+          <p>-</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>
