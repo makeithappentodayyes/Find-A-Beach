@@ -19,7 +19,19 @@ textarea {
   width: 80%;  /* The width is the width of the web page */
 }
 
+.temperature-description {
+  color: black;
+  font-size: 30px;
+}
 
+.location {
+  color: steelblue;
+  font-size: 30px;
+}
+.temperature {
+  color: black;
+  font-size: 30px;
+}
 
 .h6 {
   color: black;
