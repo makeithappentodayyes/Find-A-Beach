@@ -71,10 +71,7 @@
 
                                 <div class="row">
                                     <div class="col s6 m12"></div>
-                                    <span id="bForecast_0">
-                                        <!-- <h5>Forecast</h5> -->
-
-                                    </span>
+                                    <span id="bForecast_0"></span>
 
                                     <div class="container">
                                         <div class="app-title">
@@ -101,25 +98,22 @@
                                           </div>
                                         </div>
                                       </div>
-                                   
                                     <!-- <img src="./images/weathertestimage.png" width="80%"> -->
                                 </div>
-
                                 <div class="row">
                                     <div class="col s6 m12"></div>
                                     <img src="https://www.coastal.ca.gov/access-photos/16_san_diego/04_Carlsbad/Carlsbad_State_Beach_near_Juniper_Avenue_2013_09_27_7632.jpg"
                                         width="80%" id="bImage_0">
                                 </div>
-
                                 <div class="row">
-                                    <div class="col s6 m12" id="map"></div>
-
+                                    <div class="col s6 m12 googleMapWindow" id="map0">&nbsp;</div>
                                 </div>
                         </li>
                         <li id="beach_1">
                             <div class="collapsible-header" id="bName_1"><i
                                     class="material-icons">beach_access</i>Second</div>
                             <div class="collapsible-body" id="_1"><span>Lorem ipsum dolor sit amet.</span></div>
+
                         </li>
                         <li id="beach_2">
                             <div class="collapsible-header" id="bName_2"><i class="material-icons">beach_access</i>Third
@@ -148,8 +142,23 @@
 
     <script>
         //these variables are set to test values for mockup purposes only
-        var bLATTITUDE = 33.147743;
-        var bLONGITUDE = -117.346371;
+        // var bLATTITUDE = 33.147743;
+        // var bLONGITUDE = -117.346371;
+
+        var bLATTITUDEtmp = localStorage.getItem("myLat");
+
+        // info = localStorage.getItem("_btn"+(i+9));
+
+        var bLONGITUDEtmp = localStorage.getItem("myLong");
+
+        console.log("bLATT and bLONG = " + bLATTITUDEtmp + " and " + bLONGITUDEtmp)
+        var bLATTITUDE = parseInt(bLATTITUDEtmp);
+        var bLONGITUDE = parseInt(bLONGITUDEtmp);
+     
+
+
+        var tmpCoords = new beachCoords(bLATTITUDE, bLONGITUDE);
+
         var bNameMobileWeb = "Carlsbad State Beach";
         var bPhoto_1 =
             "https://www.coastal.ca.gov/access-photos/16_san_diego/04_Carlsbad/Carlsbad_State_Beach_near_Juniper_Avenue_2013_09_27_7632.jpg";
@@ -161,7 +170,7 @@
         // some starting variables for processing locations of beaches 
 
         // reference to our beach locator API 
-        var beachQueryURL = "https://api.coastal.ca.gov/access/v1/locations";
+        // var beachQueryURL = "https://api.coastal.ca.gov/access/v1/locations";
 
         // default searching magnitude with a scaling value to make a rectangle that would be closer in area to a search radius.  
         var inputDist = 5.0; // relative distance in miles.  Default value.  
@@ -193,17 +202,12 @@
                 this.lng = lng;
         }
 
-        var bLATTITUDE = 33.147743;
-        var bLONGITUDE = -117.346371;
-
-        var tmpCoords = new beachCoords(bLATTITUDE, bLONGITUDE);
-
         function initMap() {
 
             // new - The map, now centered on tmpCoords 
             var map = new google.maps.Map(
 
-                document.getElementById("map"), {
+                document.getElementById("map0"), {
                     zoom: 8,
                     center: tmpCoords
                 }
@@ -218,110 +222,10 @@
 
         }
 
-        // object constructor for Cali beach object.  
-        function myCaliBeachObj(
-            bID,
-            bNameMobileWeb,
-            bLATITUDE,
-            bLONGITUDE,
-            bPhoto_1) {
-
-            this.bID = bID;
-            this.bNameMobileWeb = bNameMobileWeb;
-            this.bLATITUDE = bLATITUDE;
-            this.bLONGITUDE = bLONGITUDE;
-            this.bPhoto_1 = bPhoto_1;
-
-        }
 
         var arrMyCaliBeaches = new Array; // prep array for the incoming objects 
         var tmpBeach; // temporary holding variable for beaches 
-
         var arrNearbyBeaches = new Array; // array to hold possible valid search results 
-
-        // do the francis-ajax call to Coastal Cal Gov for the beaches API that will populate a possible beaches array 
-        function getListAllCaliBeaches() {
-            $.ajax({
-                url: beachQueryURL,
-                method: "GET"
-            }).then(function (response) {
-
-                console.log(response); // need to see if response has data! 
-
-                for (i in response) {
-
-                    tmpBeach = myCaliBeachObj(
-                        response[i].ID,
-                        response[i].NameMobileWeb,
-                        response[i].LATITUDE,
-                        response[i].LONGITUDE,
-                        response[i].Photo_1
-                    );
-
-                    arrMyCaliBeaches.push(tmpBeach);
-
-                    /* 
-                    if ( i == 1425 ) { 
-                    	console.log( "Index 1425 beach name: " + tmpBeach.bNameMobileWeb ); 
-                    	console.log( "Latitude: " + tmpBeach.bLATITUDE ); 
-                    	console.log( "Longitude: " + tmpBeach.bLONGITUDE ); 
-                    } 
-                    */
-
-                }
-
-            });
-        }
-
-        // now populate full array of California beaches 
-        getListAllCaliBeaches();
-
-        /*
-            This function, named "isBeachInsideSearchBorders", attempts to find a set of latitude and longitude coordinates inside a rectangular search area.  
-            The rectangular search area borders are determined by the following:  
-		
-            North border:  Latitude value 
-            South border:  Latitude value 
-            East border:   Longitude value 
-            West border:   Longitude value 
-		
-            This function returns a boolean true or false.  
-            */
-
-        /* returns a boolean value */
-        function isBeachInsideSearchBorders(
-            northLatBrdr,
-            southLatBrdr,
-            eastLngBrdr,
-            westLngBrdr,
-            bchLat,
-            bchLong) {
-
-            if (bchLat <= northLatBrdr) { // check if below North border; possible true if this passes 
-                if (bchLat >= southLatBrdr) { // check if above South border; possible true if this passes 
-                    if (bchLong >=
-                        westLngBrdr
-                        ) { // check if east of the west border; possible true if this passes;     going west of Greenwich Mean goes negative 
-                        if (bchLong <=
-                            eastLngBrdr
-                            ) { // check if west of the east border; definite true if this passes!!  ; going west of Greenwich Mean goes negative 
-
-                            return true; // the ONLY result that should return true because all border tests have passed!!  
-
-                        } else {
-                            return false;
-                        }
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-
-        }
 
         // end Alvin insertion of code 
 
@@ -355,13 +259,15 @@
                 navigator.geolocation.getCurrentPosition(success, error, options);
             })
 
-
         });
+
     </script>
 
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script src="app.js"></script>
+        <script type="text/javascript" src="js/allCaliBeaches.js"></script>
+        <script type="text/javascript" src="js/beachProcessor.js"></script>
+        <script type="text/javascript" src="app.js"></script>
 </body>
 
 </html>

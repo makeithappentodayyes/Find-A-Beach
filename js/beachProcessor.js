@@ -124,6 +124,8 @@
 		// myStartLtLg = new beachCoords( geoLocLat, geoLocLng ); // coords for UCSD Extension room 308 
 	
 		myStartLtLg = new beachCoords( 32.8530875, -117.18322279999998 ); // coords for UCSD Extension room 308 
+
+		
 		
 	} 
 
@@ -245,7 +247,7 @@ This function returns a boolean true or false.
 						// positive hit result with a picture now gets added to array of nearby beaches 
 						arrNearbyBeaches.push(tmpBeach); 
 						boolFoundBeach = true; 
-						//console.log( "Found nearby beach! : " + arrAllCaliBeaches[i].NameMobileWeb ); 
+						console.log( "Found nearby beach! : " + arrAllCaliBeaches[i].NameMobileWeb ); 
 						
 					} 
 				} 
@@ -269,9 +271,11 @@ This function returns a boolean true or false.
 	
 	console.log(arrNearbyBeaches); 
 	lengthArrNearbyBeaches = arrNearbyBeaches.length; 
-	console.log(lengthArrNearbyBeaches); 
+	console.log("the length of the nearby beaches array is: " + lengthArrNearbyBeaches); 
 
 	var beachLoopLength = ( maxBeaches >= lengthArrNearbyBeaches ) ? ( lengthArrNearbyBeaches ) : ( maxBeaches ) ; 
+
+	console.log("beach loop length is " + beachLoopLength)
 	
 	for ( i = 0; i < beachLoopLength; i ++ ) { 
 	
