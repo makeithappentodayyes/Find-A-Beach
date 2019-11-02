@@ -19,8 +19,8 @@ textarea {
   width: 80%;  /* The width is the width of the web page */
 }
 
-.temperature-description {
-  color: black;
+.temperature-value {
+  color:black;
   font-size: 30px;
 }
 
@@ -28,8 +28,8 @@ textarea {
   color: steelblue;
   font-size: 30px;
 }
-.temperature {
-  color: black;
+.the-temperature {
+  color:black;
   font-size: 30px;
 }
 
