@@ -46,12 +46,11 @@ if('geolocation' in navigator){
 
 function setPosition(position){
 
-    let latitude = position.coords.latitude;
+    var latitude = parseFloat(localStorage.getItem("myLat_0"));
+    var longitude = parseFloat(localStorage.getItem("myLong_0"));
 
-    let longitude = position.coords.longitude;
-
-    
-
+    // let latitude = position.coords.latitude;
+    // let longitude = position.coords.longitude;
     getWeather(latitude, longitude);
 
 }
@@ -61,7 +60,6 @@ function setPosition(position){
 function showError(error){
 
     notificationElement.style.display = "block";
-
     notificationElement.innerHTML = `<p> ${error.message} </p>`;
 
 }
@@ -77,23 +75,17 @@ function getWeather(latitude, longitude){
     fetch(api)
 
         .then(function(response){
-
             let data = response.json();
-
+            console.log(response.json)
             return data;
-
         })
 
         .then(function(data){
 
             weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-
             weather.description = data.weather[0].description;
-
             weather.iconId = data.weather[0].icon;
-
             weather.city = data.name;
-
             weather.country = data.sys.country;
 
         })

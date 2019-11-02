@@ -280,9 +280,17 @@ This function returns a boolean true or false.
 	for ( i = 0; i < beachLoopLength; i ++ ) { 
 	
 		console.log( "Beach #" + i + ", name: "      + arrNearbyBeaches[i].bNameMobileWeb ); 
+		localStorage.setItem("bName_"+i, arrNearbyBeaches[i].bNameMobileWeb)
+
 		console.log( "Beach #" + i + ", image src: " + arrNearbyBeaches[i].bPhoto_1 ); 
+		localStorage.setItem("bPhoto_"+i, arrNearbyBeaches[i].bPhoto_1)
+
 		console.log( "Beach #" + i + ", Latitude: "  + arrNearbyBeaches[i].bLATITUDE ); 
+		localStorage.setItem("myLat_"+i, arrNearbyBeaches[i].bLATITUDE)
+
 		console.log( "Beach #" + i + ", Longitude: " + arrNearbyBeaches[i].bLONGITUDE ); 
+		localStorage.setItem("myLong_"+i, arrNearbyBeaches[i].bLONGITUDE)
+
 		
 	} 
 	
