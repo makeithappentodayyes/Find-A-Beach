@@ -14,6 +14,11 @@ textarea {
   font-style: italic;
 }
 
+.googleMapWindow {
+  height: 300px; /* The height is 300 pixels */
+  width: 80%;    /* The width is the width of the web page */
+} 
+
 #map {
   height: 300px;  /* The height is 300 pixels */
   width: 80%;  /* The width is the width of the web page */
